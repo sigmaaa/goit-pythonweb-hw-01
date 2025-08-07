@@ -32,7 +32,8 @@ class Library(LibraryInterface):
     def show_books(self) -> None:
         for book in self.books:
             print(
-                f'Title: {book.get_title()}, Author: {book.get_author()}, Year: {book.get_year()}')
+                f"Title: {book.get_title()}, Author: {book.get_author()}, Year: {book.get_year()}"
+            )
 
 
 class Book:
@@ -70,8 +71,7 @@ def main():
     manager = LibraryManager(library)
 
     while True:
-        command = input(
-            "Enter command (add, remove, show, exit): ").strip().lower()
+        command = input("Enter command (add, remove, show, exit): ").strip().lower()
 
         match command:
             case "add":
