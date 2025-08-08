@@ -1,10 +1,6 @@
-import logging
+from logger import logger
 from abc import ABC, abstractmethod
 from typing import List
-
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
 
 
 class Book:
@@ -44,20 +40,20 @@ class Library(LibraryInterface):
     def add_book(self, title: str, author: str, year: str) -> None:
         book = Book(title, author, year)
         self.books.append(book)
-        logging.info(f"Book'{title}' has been added to the library")
+        logger.info(f"Book'{title}' has been added to the library")
 
     def remove_book(self, title: str) -> bool:
         for book in self.books:
             if book.get_title() == title:
                 self.books.remove(book)
-                logging.info(f"Book'{title}' has been removed from the library")
+                logger.info(f"Book'{title}' has been removed from the library")
                 break
 
     def show_books(self) -> None:
         if not self.books:
-            logging.info("Library is empty")
+            logger.info("Library is empty")
         for book in self.books:
-            logging.info(
+            logger.info(
                 f"Title: {book.get_title()}, Author: {book.get_author()}, Year: {book.get_year()}"
             )
 
@@ -97,7 +93,7 @@ def main() -> None:
             case "exit":
                 break
             case _:
-                logging.info("Invalid command. Please try again.")
+                logger.info("Invalid command. Please try again.")
 
 
 if __name__ == "__main__":
